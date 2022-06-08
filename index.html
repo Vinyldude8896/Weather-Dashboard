@@ -4,9 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="col-12 align-items-center border-primary mt-1 mb-2 ">
+    <div class="row">
+        <header class="col-11 mt-2 mb-1 ">
+            <h1 id="main-header" class="text-center text-light linear mt-1 pt-3"> Weather Dashboard</h1>
+        </header>
+        </div>
+    </div>
+<main>
+    <div class="d-flex">
+    <div class="col-3 pt-2 card  mb-3">
+        <div class="card-header">
+        Search for a City:
+        </div>
+        <input class="p-1 mb-2">
+    </input>
+    <button class=" pt-2 btn-primary btn-lg mb-4 search-button"> Search</button>    
+    </div>
+    </div>
+    <div class="">
+    <div class="card2 col-7 mb-3 pt-2">
+        <h2 class="card-header">
+            Toronto
+        </h2>
+        <ul class="list-group list-group-flush m-2">
+            <li class="d-flex">
+            Temp:
+                <p class="weather_info"> 74.01F</p> 
+            </li>
+            <li class="d-flex">
+            Wind:
+                <p class="weather_info"> 6.67 MPH</p> 
+            </li>
+            <li class="d-flex">
+                Humidity:
+                    <p class="weather_info"> 46%</p> 
+            </li>
+            <li class="d-flex">
+                UV Index
+                    <p class="weather_info"> 0.047</p> 
+            </li>
+        </ul>
+
+
+    </div>
+    </div>
+
+
+</main>
+  
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
