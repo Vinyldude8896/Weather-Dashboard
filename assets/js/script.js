@@ -3,6 +3,8 @@ var SearchCityButton = document.querySelector("#search-button");
 var SearchCityHeader = document.querySelector("#search-city");
 var currentTemperatureLi = document.querySelector("#current_temp");
 var citySearchEntered = "";
+var citySearchEnteredLong = "";
+var citySearchEnteredLat = "";
 var currentTemperature = "";
 var currentHumidity = "";
 var currentWind = "";
@@ -29,7 +31,7 @@ var formSubmitHandler = function(event) {
 }
 
 var getWeatherResults = function(citySearchEntered) {
-    var apiUrl ="https://api.openweathermap.org/data/2.5/onecall?lat=43.65&lon=-79.38&units=metric&exclude=hourly,daily&appid=feb921e24625822c8914d6709ecb623e";
+    var apiUrl ="https://api.openweathermap.org/data/2.5/onecall?lat=" + citySearchEnteredLat + "&lon=" + citySearchEnteredLong + "&units=metric&exclude=daily&appid=feb921e24625822c8914d6709ecb623e";
     // "https://api.openweathermap.org/data/2.5/onecall?" + "lat={" +latitude + "}" + "+&lon={"+ longitude + "}" + "&exclude={minutely}" + "&appid={" + apiKey + "}";
 
     fetch(apiUrl).then(function(response) {
@@ -59,12 +61,32 @@ var getWeatherResults = function(citySearchEntered) {
 };
 
 
+var getLongLatResults = function(){
+    var apiUrl="http://api.positionstack.com/v1/forward?access_key=90229593ed55301c5055408148765137&query=" + citySearchEntered + "&limit1";
+
+    fetch(apiUrl).then(function(response) {
+        if(response.ok) {
+        response.json().then(function(data){
+            console.log(data);
+         var longitude = data.data[0].longitude;
+         console.log(longitude);
+         citySearchEnteredLong = longitude;
+         var latitude = data.data[0].latitude;
+         citySearchEnteredLat = latitude;
+         console.log(latitude);
+        getWeatherResults();
+        });
+    }
+});
+
+}
+
 var buttonClickHandler = function() {
     var cityName = CityNameInput.value.trim();
     citySearchEntered = cityName
     console.log("The city entered is " + cityName); 
     console.log("The city name variable is " + citySearchEntered);
-    getWeatherResults();
+    getLongLatResults();
 }
 
 
