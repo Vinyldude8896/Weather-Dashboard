@@ -11,6 +11,7 @@ var currentTemperature = "";
 var currentHumidity = "";
 var currentWind = "";
 var currentUvIndex = "";
+var CurrentDayConditions = "";
 var conditionsCurrentDay = document.querySelector("#current_temp_conditions")
 
 // next day global variables for date, temp, wind, humidity, conditions
@@ -20,13 +21,19 @@ var nextDateTemp = "";
 var nextDateWind = "";
 var nextDateHumidity = "";
 var NextDayConditions = "";
+
+// variables for API keys
 var apiKeyWeather = "feb921e24625822c8914d6709ecb623e";
 var apiLongLat = "90229593ed55301c5055408148765137"
+
+// longtitude and latitude variables
 var longitude = "43.65";
 var latitude = "79.38";
+
+// date format
 var date = $.datepicker.formatDate("(d/ m/ yy)", new Date())
 
-
+// function to convert a date from Unix format
 var ConvertUnixDate = function()  {
     // UnixTimestamp
     var unixtimestamp = NextDayUnix;
@@ -64,7 +71,7 @@ var ConvertUnixDate = function()  {
 
 }
 
-
+// function to display the current weather and the forecast weather
 var displayCurrentWeather = function(data){
 
     // displaying weather results for today
@@ -74,11 +81,14 @@ var displayCurrentWeather = function(data){
     document.getElementById("current_wind").innerHTML = "Wind: " + " " + currentWind + 'MPH';
     document.getElementById("current_humidity").innerHTML = "Humidity: " + " " + currentHumidity;
     document.getElementById("current_UV").innerHTML = "UV Index: " + " " + currentUvIndex;
-    // var currentTempConditions = document.createElement("Li")
-    // currentTempConditions.classList = "d-flex";
-    // currentTempConditions.appendChild(currentTemperatureUL);
-    // currentTempConditions.innerHTML = "Rainy Day";
-    // //  "<span class='iconify' data-icon='fa-solid:cloud-rain'></span>"
+   
+    var currentDayIcon = document.getElementById("current_forecast")
+    if (CurrentDayConditions === "rain"){
+         currentDayIcon.dataset.icon = "fa-solid:cloud-rain";
+    } else if (CurrentDayConditions === "cloudy"){
+        currentDayIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    } else  currentDayIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
+   
   
 
     // displaying next day weather results
@@ -87,16 +97,24 @@ var displayCurrentWeather = function(data){
     document.getElementById("next_day_wind").innerHTML = "Wind: " + nextDateWind + 'MPH';
     document.getElementById("next_day_humidity").innerHTML = "Humidity: " + nextDateHumidity;
 
-
+    var nextdayIcon = document.getElementById("forecast_day_one")
+    if (NextDayConditions === "rain"){
+         nextdayIcon.dataset.icon = "fa-solid:cloud-rain";
+    } else if (NextDayConditions === "cloudy"){
+        nextdayIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    } else  nextdayIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
 
 
 }
+
+
 var formSubmitHandler = function(event) {
     // prevent page from refreshing
     event.preventDefault();
 
 }
 
+// function to get weather information by city provided
 var getWeatherResults = function(citySearchEntered) {
     var apiUrl ="https://api.openweathermap.org/data/2.5/onecall?lat=" + citySearchEnteredLat + "&lon=" + citySearchEnteredLong + "&units=metric&exclude=minutely&appid=" + apiKeyWeather;
    
@@ -118,6 +136,17 @@ var getWeatherResults = function(citySearchEntered) {
             var UvIndex = data.current.uvi;
             currentUvIndex = UvIndex;
 
+            var CurrentDayClouds = parseInt(data.daily[0].clouds);
+            var CurrentDayRain = parseFloat((data.daily[0].pop).toFixed(2));
+
+            // checking to see chance of clouds, rain or sun
+            if (CurrentDayClouds >50) {
+                CurrentDayConditions ="cloudy";
+            } else if (CurrentDayRain > 0.60) {
+                CurrentDayConditions = "rain"
+            } else CurrentDayConditions = "sunny"
+            console.log("Cloudiness is " + CurrentDayClouds + ". Current Day Rain is " + CurrentDayRain + ". Current Day conditions are " + CurrentDayConditions );
+
             // next day temperatures being pulled and set
 
             var NextDay = data.daily[1].dt;
@@ -135,11 +164,12 @@ var getWeatherResults = function(citySearchEntered) {
             nextDateHumidity = NextDayHumidity;
 
             var nextDayClouds = parseInt(data.daily[1].clouds);
-            var nextDayRain = parseInt(data.daily[1].pop);
+            var nextDayRain = parseFloat((data.daily[1].pop).toFixed(2));
 
+            // checking to see chance of clouds, rain or sun
             if (nextDayClouds >50) {
                 NextDayConditions ="cloudy";
-            } else if (nextDayRain > 50) {
+            } else if (nextDayRain > 0.60) {
                 NextDayConditions = "rain"
             } else NextDayConditions = "sunny"
             console.log("Cloudiness is " + nextDayClouds + ". Next Day Rain is " + nextDayRain + ". Next Day conditions are " + NextDayConditions );
@@ -161,8 +191,8 @@ var getWeatherResults = function(citySearchEntered) {
 });
 };
 
-
-var getLongLatResults = function(){
+    // function call to API to get Longitude and Latitude of city entered
+    var getLongLatResults = function(){
     var apiUrl="http://api.positionstack.com/v1/forward?access_key=" + apiLongLat +"&query=" + citySearchEntered + "&limit1";
 
     fetch(apiUrl).then(function(response) {
@@ -182,6 +212,7 @@ var getLongLatResults = function(){
 
 }
 
+// function to handle button click and asign city name
 var buttonClickHandler = function() {
     var cityName = CityNameInput.value.trim();
     citySearchEntered = cityName
