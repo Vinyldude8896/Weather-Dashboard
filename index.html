@@ -9,58 +9,147 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <title>Document</title>
+    <title>Weather Dashboard</title>
 </head>
 <body>
     <div class="col-12 align-items-center border-primary mt-1 mb-2 ">
     <div class="row">
-        <header class="col-11 mt-2 mb-1 ">
+        <header class="col-12 mt-2 mb-1 mr-5 ">
             <h1 id="main-header" class="text-center text-light linear mt-1 pt-3"> Weather Dashboard</h1>
         </header>
         </div>
     </div>
-<main>
-    <div class="d-flex">
-    <div class="col-3 pt-2 card  mb-3">
-        <div class="card-header">
-        Search for a City:
-        </div>
-        <input class="p-1 mb-2">
-    </input>
-    <button class=" pt-2 btn-primary btn-lg mb-4 search-button"> Search</button>    
-    </div>
-    </div>
-    <div class="">
-    <div class="card2 col-7 mb-3 pt-2">
-        <h2 class="card-header">
-            Toronto
-        </h2>
-        <ul class="list-group list-group-flush m-2">
-            <li class="d-flex">
-            Temp:
-                <p class="weather_info"> 74.01F</p> 
-            </li>
-            <li class="d-flex">
-            Wind:
-                <p class="weather_info"> 6.67 MPH</p> 
-            </li>
-            <li class="d-flex">
-                Humidity:
-                    <p class="weather_info"> 46%</p> 
-            </li>
-            <li class="d-flex">
-                UV Index
-                    <p class="weather_info"> 0.047</p> 
-            </li>
-        </ul>
-
-
-    </div>
-    </div>
-
-
-</main>
+    <div class="row min-vh-100 no-gutters">
+        <header class="col-12 col-lg-3 text-dark sticky-top d-flex flex-column p-4 p-lg-3 border-bottom-2">
+          <h1 class="text-center">Search for a City</h1>
+          <span class="d-inline d-lg-none"></span>
+          <input class="p-1 mb-2"></input>
+          <button id="create-task" class="btn btn-lg btn-primary ">
+            <span class=" mr-s"</span>
+                search
+            </button>
+            <h1 class="card p-2 mb-3"></h1>
+        </header>
+        <main class="col-12 col-lg-9 d-flex flex-column">
+          <div class="m-1 mr-5 row justify-content-around">
+            <!-- Main Window -->
+            <div class = "card2 col-12 mb-2">
+              <div class="">
+                <h2 class="card-header">
+                  Toronto
+                  <span class="date">
+                    Monday, June 8th, 2022
+                  </span>
+                </h2>
+            <ul class="list-group list-group-flush m-3"> 
+                <li class="d-flex">
+                    Temp:
+                        <p class="weather_info"> 74.01F</p> 
+                    </li>
+                    <li class="d-flex">
+                        Wind:
+                            <p class="weather_info"> 6.67 MPH</p> 
+                        </li>
+                        <li class="d-flex">
+                            Humidity:
+                                <p class="weather_info"> 46%</p> 
+                        </li>
+                        <li class="d-flex">
+                            UV Index
+                                <p class="weather_info"> 0.047</p> 
+                        </li>
+            </ul>
+            </div>
+          </div>
+            <div class ="col-12 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-content-around">
+                <h2 class="text-dark d-flex">
+                    5 Day Forecast
+                </h2>
+                <div class="card text-white bg-primary " style="max-width: 16rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                      <h5 class="card-title">6/02/2022</h5>
+                      <ul class="list-group list-group-flush">
+                          <li class="d-flex">Conditions</li>
+                          <li class="d-flex">Temp: 73.72 F</li>
+                          <li class="d-flex">Wind: 9.53 MPH</li>
+                          <li class="d-flex">Humidity: 66%</li>
+                      </ul>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-5 mb-3 d-flex flex-column row justify-content-around">
+                <div class="card text-white bg-primary" style="max-width: 16rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">6/02/2022</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="d-flex">Conditions</li>
+                            <li class="d-flex">Temp: 73.72 F</li>
+                            <li class="d-flex">Wind: 9.53 MPH</li>
+                            <li class="d-flex">Humidity: 66%</li>
+                        </ul>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-5 mb-3 d-flex flex-column row justify-content-around">
+                <div class="card text-white bg-primary" style="max-width: 16rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">6/02/2022</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="d-flex">Conditions</li>
+                            <li class="d-flex">Temp: 73.72 F</li>
+                            <li class="d-flex">Wind: 9.53 MPH</li>
+                            <li class="d-flex">Humidity: 66%</li>
+                        </ul>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-content-around">
+                <h2 class="text-dark d-flex mb-5">
+                </h2>
+                <div class="card text-white bg-primary" style="max-width: 16rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">6/02/2022</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="d-flex">Conditions</li>
+                            <li class="d-flex">Temp: 73.72 F</li>
+                            <li class="d-flex">Wind: 9.53 MPH</li>
+                            <li class="d-flex">Humidity: 66%</li>
+                        </ul>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-10 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-content-around">
+                <h2 class="text-dark d-flex mb-5">
+                </h2>
+                <div class="card text-white bg-primary" style="max-width: 16rem;">
+                    <div class="card-header">Header</div>
+                    <d<h5 class="card-title">6/02/2022</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="d-flex">Conditions</li>
+                        <li class="d-flex">Temp: 73.72 F</li>
+                        <li class="d-flex">Wind: 9.53 MPH</li>
+                        <li class="d-flex">Humidity: 66%</li>
+                    </ul>
+                    </div>
+                  </div>
+            </div>
+          </div>
   
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="./assets/js/script.js"></script>
+</body>
+</html>
+
+
 
 
 
