@@ -9,7 +9,8 @@ var currentTemperature = "";
 var currentHumidity = "";
 var currentWind = "";
 var currentUvIndex = "";
-var apiKey = "feb921e24625822c8914d6709ecb623e";
+var apiKeyWeather = "feb921e24625822c8914d6709ecb623e";
+var apiLongLat = "90229593ed55301c5055408148765137"
 var longitude = "43.65";
 var latitude = "79.38";
 var date = $.datepicker.formatDate("(d/ m/ yy)", new Date())
@@ -31,9 +32,8 @@ var formSubmitHandler = function(event) {
 }
 
 var getWeatherResults = function(citySearchEntered) {
-    var apiUrl ="https://api.openweathermap.org/data/2.5/onecall?lat=" + citySearchEnteredLat + "&lon=" + citySearchEnteredLong + "&units=metric&exclude=daily&appid=feb921e24625822c8914d6709ecb623e";
-    // "https://api.openweathermap.org/data/2.5/onecall?" + "lat={" +latitude + "}" + "+&lon={"+ longitude + "}" + "&exclude={minutely}" + "&appid={" + apiKey + "}";
-
+    var apiUrl ="https://api.openweathermap.org/data/2.5/onecall?lat=" + citySearchEnteredLat + "&lon=" + citySearchEnteredLong + "&units=metric&exclude=daily&appid=" + apiKeyWeather;
+   
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
         response.json().then(function(data){
@@ -62,7 +62,7 @@ var getWeatherResults = function(citySearchEntered) {
 
 
 var getLongLatResults = function(){
-    var apiUrl="http://api.positionstack.com/v1/forward?access_key=90229593ed55301c5055408148765137&query=" + citySearchEntered + "&limit1";
+    var apiUrl="http://api.positionstack.com/v1/forward?access_key=" + apiLongLat +"&query=" + citySearchEntered + "&limit1";
 
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
