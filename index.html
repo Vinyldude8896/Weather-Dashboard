@@ -23,8 +23,8 @@
         <header class="col-12 col-lg-3 text-dark sticky-top d-flex flex-column p-4 p-lg-3 border-bottom-2">
           <h1 class="text-center">Search for a City</h1>
           <span class="d-inline d-lg-none"></span>
-          <input class="p-1 mb-2"></input>
-          <button id="create-task" class="btn btn-lg btn-primary ">
+          <input id="input-city" class="p-1 mb-2"></input>
+          <button id="search-button" class="btn btn-lg btn-primary" data-group="search">
             <span class=" mr-s"</span>
                 search
             </button>
@@ -35,26 +35,26 @@
             <!-- Main Window -->
             <div class = "card2 col-12 mb-2">
               <div class="">
-                <h2 class="card-header">
+                <h2 id="search-city" class="card-header">
                   Toronto
                   <span class="date">
-                    Monday, June 8th, 2022
+                    (9/06/2022)
                   </span>
                 </h2>
             <ul class="list-group list-group-flush m-3"> 
-                <li class="d-flex">
+                <li id="current_temp" class="d-flex">
                     Temp:
-                        <p class="weather_info"> 74.01F</p> 
+                        <p id="currenttemp" class="weather_info"> 74.01F</p> 
                     </li>
-                    <li class="d-flex">
+                    <li id="current_wind" class="d-flex">
                         Wind:
                             <p class="weather_info"> 6.67 MPH</p> 
                         </li>
-                        <li class="d-flex">
+                        <li id="current_humidity" class="d-flex">
                             Humidity:
                                 <p class="weather_info"> 46%</p> 
                         </li>
-                        <li class="d-flex">
+                        <li id="current_UV" class="d-flex">
                             UV Index
                                 <p class="weather_info"> 0.047</p> 
                         </li>
@@ -156,6 +156,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="./assets/js/script.js"></script>
 </body>
 </html>
