@@ -37,11 +37,11 @@
               <div class="">
                 <h2 id="search-city" class="card-header">
                   Toronto
-                  <span class="date">
+                  <span id="current_date" class="date">
                     (9/06/2022)
                   </span>
                 </h2>
-            <ul class="list-group list-group-flush m-3"> 
+            <ul id= "current_temp_conditions" class="list-group list-group-flush m-3"> 
                 <li id="current_temp" class="d-flex">
                     Temp:
                         <p id="currenttemp" class="weather_info"> 74.01F</p> 
@@ -61,24 +61,24 @@
             </ul>
             </div>
           </div>
-            <div class ="col-12 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-content-around">
+            <div class ="col-12 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-space-between">
                 <h2 class="text-dark d-flex">
                     5 Day Forecast
                 </h2>
                 <div class="card text-white bg-primary " style="max-width: 16rem;">
                     <div class="card-header">Header</div>
                     <div class="card-body">
-                      <h5 class="card-title">6/02/2022</h5>
+                      <h5 id="next_day_date" class="card-title">6/02/2022</h5>
                       <ul class="list-group list-group-flush">
                           <li class="d-flex">Conditions</li>
-                          <li class="d-flex">Temp: 73.72 F</li>
-                          <li class="d-flex">Wind: 9.53 MPH</li>
-                          <li class="d-flex">Humidity: 66%</li>
+                          <li id="next_day_temp"class="d-flex">Temp: 73.72 F</li>
+                          <li id="next_day_wind" class="d-flex">Wind: 9.53 MPH</li>
+                          <li id="next_day_humidity" class="d-flex">Humidity: 66%</li>
                       </ul>
                     </div>
                   </div>
             </div>
-            <div class="col-12 col-md-6 col-xl-3 mt-5 mb-3 d-flex flex-column row justify-content-around">
+            <div class="col-12 col-md-6 col-xl-3 mt-5 mb-3 d-flex flex-column row justify-space-between">
                 <div class="card text-white bg-primary" style="max-width: 16rem;">
                     <div class="card-header">Header</div>
                     <div class="card-body">
@@ -92,7 +92,7 @@
                     </div>
                   </div>
             </div>
-            <div class="col-12 col-md-6 col-xl-3 mt-5 mb-3 d-flex flex-column row justify-content-around">
+            <div class="col-12 col-md-6 col-xl-3 mt-5 mb-3 d-flex flex-column row justify-space-between">
                 <div class="card text-white bg-primary" style="max-width: 16rem;">
                     <div class="card-header">Header</div>
                     <div class="card-body">
@@ -106,7 +106,7 @@
                     </div>
                   </div>
             </div>
-            <div class="col-12 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-content-around">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-space-between">
                 <h2 class="text-dark d-flex mb-5">
                 </h2>
                 <div class="card text-white bg-primary" style="max-width: 16rem;">
@@ -122,7 +122,7 @@
                     </div>
                   </div>
             </div>
-            <div class="col-10 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-content-around">
+            <div class="col-10 col-md-6 col-xl-3 mb-3 d-flex flex-column row justify-space-between">
                 <h2 class="text-dark d-flex mb-5">
                 </h2>
                 <div class="card text-white bg-primary" style="max-width: 16rem;">
@@ -138,25 +138,11 @@
                   </div>
             </div>
           </div>
-  
-
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="./assets/js/script.js"></script>
-</body>
-</html>
-
-
-
-
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 <script src="./assets/js/script.js"></script>
 </body>
 </html>
