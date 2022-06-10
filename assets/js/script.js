@@ -4,6 +4,7 @@ var SearchCityHeader = document.querySelector("#search-city");
 var currentTemperatureUL = document.querySelector("#current_temp_conditions");
 var nextDayDate = document.querySelector("#next_day_date");
 var CurrentDate = document.querySelector("#current_date");
+
 var citySearchEntered = "";
 var citySearchEnteredLong = "";
 var citySearchEnteredLat = "";
@@ -21,6 +22,14 @@ var nextDateTemp = "";
 var nextDateWind = "";
 var nextDateHumidity = "";
 var NextDayConditions = "";
+
+
+// second forecast day variables
+var secondForecastDate = "";
+var secondForecastTemp = "";
+var secondForecastWind = "";
+var secondForecastHumidity = "";
+var secondForecastConditions = "";
 
 // variables for API keys
 var apiKeyWeather = "feb921e24625822c8914d6709ecb623e";
@@ -52,21 +61,18 @@ var ConvertUnixDate = function()  {
 
     // Day
     var day = date.getDate();
-
-    // Hours
-    var hours = date.getHours();
-
-    //minutes
-    var minutes = "0" + date.getMinutes();
-
-    //seconds
-    var seconds = "0" + date.getSeconds();
+    var dayTwo = date.getDate()+1;
 
     //Display date and time in DD-MM-yyyy format
 
     var convdataTime =  day +"/" + month + "/" + year ;
     nextDateConverted = convdataTime;
     console.log("the converted date is now" +convdataTime); 
+
+    var convertdateSecond = dayTwo +"/" + month + "/" + year ;
+    secondForecastDate = convertdateSecond;
+    console.log("the converted second date is now" + convertdateSecond); 
+
 
 
 }
@@ -104,6 +110,20 @@ var displayCurrentWeather = function(data){
         nextdayIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
     } else  nextdayIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
 
+
+    // displaying day 2 of 5 day forecast
+
+    second_forecast_date.innerHTML = secondForecastDate;
+    document.getElementById("second_forecast_temp").innerHTML = "Temp: " + secondForecastTemp + '&#8451';
+    document.getElementById("second_forecast_wind").innerHTML = "Wind: " + secondForecastWind + 'MPH';
+    document.getElementById("second_forecast_humidity").innerHTML = "Humidity: " + secondForecastHumidity;
+
+    var secondForecastIcon = document.getElementById("second_forecast_icon")
+    if (secondForecastConditions === "rain"){
+         secondForecastIcon.dataset.icon = "fa-solid:cloud-rain";
+    } else if (secondForecastConditions === "cloudy"){
+        secondForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    } else  secondForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
 
 }
 
@@ -175,7 +195,33 @@ var getWeatherResults = function(citySearchEntered) {
             console.log("Cloudiness is " + nextDayClouds + ". Next Day Rain is " + nextDayRain + ". Next Day conditions are " + NextDayConditions );
 
 
+            // second day forecast temperatures being pulled and set
 
+            var second_forecast = data.daily[2].dt;
+            console.log("The second Day in Unix format is" + second_forecast);
+            
+            var secondDaytemp = data.daily[2].temp.day;
+            secondForecastTemp = secondDaytemp;
+            console.log("the second day tempearture is " + secondDaytemp);
+
+            var secondDayWind = data.daily[2].wind_speed;
+            secondForecastWind = secondDayWind;
+            console.log("The second day wind is " + secondDayWind);
+
+            var secondDayHumidity = data.daily[2].humidity;
+            secondForecastHumidity = secondDayHumidity;
+            console.log("The second day humidity is " + secondDayHumidity);
+
+            var secondDayClouds = parseInt(data.daily[2].clouds);
+            var secondDayRain = parseFloat((data.daily[2].pop).toFixed(2));
+
+            // checking to see chance of clouds, rain or sun
+            if (secondDayClouds >50) {
+                secondForecastConditions ="cloudy";
+            } else if (secondDayRain > 0.60) {
+                secondForecastConditions = "rain";
+            } else secondForecastConditions = "sunny";
+            console.log("Cloudiness is " + secondDayClouds + ". second Day Rain is " + secondDayRain + ". second Day conditions are " + secondForecastConditions );
 
 
 
