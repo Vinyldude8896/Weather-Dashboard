@@ -82,9 +82,10 @@ var date = $.datepicker.formatDate("(d/ m/ yy)", new Date())
      console.log("These are the previous searches" + citySearches);
     // loop over each
 
-    // $.each(citySearches, function(list, arr) {
-    //     console.log(list, arr);
-    
+    // if nothing in localStorage, create a new object to track all task status arrays
+    if (!citySearches) {
+        citySearches = []
+    };
 
     for (i=0; i < citySearches.length; i++) {
         //append the li elements again
