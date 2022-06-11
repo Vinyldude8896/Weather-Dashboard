@@ -12,7 +12,7 @@ var fifthDayDate = document.querySelector("#fifth_forecast_date");
 var CurrentDate = document.querySelector("#current_date");
 var searchHistoryResults = document.querySelector("#search_history_results");
 
-
+var cityNameConverted = "";
 var citySearchEntered = "";
 var citySearchEnteredLong = "";
 var citySearchEnteredLat = "";
@@ -171,7 +171,7 @@ var ConvertUnixDate = function()  {
 var displayCurrentWeather = function(data){
 
     // displaying weather results for today
-    var searchCityHeader = citySearchEntered;
+    var searchCityHeader = cityNameConverted;
     SearchCityHeader.innerHTML = searchCityHeader + " " + date;
     document.getElementById("current_temp").innerHTML = "Temp: " + " " + currentTemperature + '&#8451';
     document.getElementById("current_wind").innerHTML = "Wind: " + " " + currentWind + 'MPH';
@@ -461,6 +461,9 @@ var getWeatherResults = function(citySearchEntered) {
          var latitude = data.data[0].latitude;
          citySearchEnteredLat = latitude;
          console.log(latitude);
+         var cityNameLabel = data.data[0].label;
+         cityNameConverted = cityNameLabel;
+         console.log("Converteed City Name is " + cityNameConverted);
         getWeatherResults();
         });
     }
