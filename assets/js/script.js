@@ -75,6 +75,30 @@ var date = $.datepicker.formatDate("(d/ m/ yy)", new Date())
 
 
 
+    //load previous searches from storage
+    var loadCitySearches = function() {
+
+     citySearches = JSON.parse(localStorage.getItem("citySearches"));
+     console.log("These are the previous searches" + citySearches);
+    // loop over each
+
+    // $.each(citySearches, function(list, arr) {
+    //     console.log(list, arr);
+    
+
+    for (i=0; i < citySearches.length; i++) {
+        //append the li elements again
+    var search_results = document.querySelector("#search_history_results");
+    var searchResultsCity = document.createElement("li")
+
+    searchResultsCity.classList = "d-flex search-results";
+    searchResultsCity.setAttribute("id", citySearches[i]);
+    searchResultsCity.innerHTML = citySearches[i];
+    search_results.appendChild(searchResultsCity);
+    }
+    
+}
+
     // function to load previous search results
     // task text was clicked
     $(".list-group").on("click", "li", function() {
@@ -83,7 +107,9 @@ var date = $.datepicker.formatDate("(d/ m/ yy)", new Date())
         .text()
         .trim();
 
+        // setting search city to text in input box
         citySearchEntered = text;
+        // getting weather resutls again with this city
         getLongLatResults();
     });
 
@@ -458,7 +484,7 @@ var buttonClickHandler = function() {
     getLongLatResults();
 }
 
-
+loadCitySearches();
 
 // searchHistoryResults.addEventListener("click", loadcityresults);
 CityNameInput.addEventListener("submit", formSubmitHandler);
