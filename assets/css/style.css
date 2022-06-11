@@ -48,3 +48,8 @@
     margin-left: 10px;
 }
 
+.search-results {
+    background-color: lightgray;
+    font-weight: bold;
+    justify-content: center;
+}

@@ -1,3 +1,5 @@
+var citySearches = [];
+
 var CityNameInput = document.querySelector("#input-city");
 var SearchCityButton = document.querySelector("#search-button");
 var SearchCityHeader = document.querySelector("#search-city");
@@ -8,6 +10,8 @@ var thirdDayDate = document.querySelector("#third_forecast_date");
 var fourthDayDate = document.querySelector("#fourth_forecast_date");
 var fifthDayDate = document.querySelector("#fifth_forecast_date");
 var CurrentDate = document.querySelector("#current_date");
+var searchHistoryResults = document.querySelector("#search_history_results");
+
 
 var citySearchEntered = "";
 var citySearchEnteredLong = "";
@@ -68,6 +72,20 @@ var latitude = "79.38";
 
 // date format
 var date = $.datepicker.formatDate("(d/ m/ yy)", new Date())
+
+
+
+    // function to load previous search results
+    // task text was clicked
+    $(".list-group").on("click", "li", function() {
+        // get current text of li element
+        var text = $(this)
+        .text()
+        .trim();
+
+        citySearchEntered = text;
+        getLongLatResults();
+    });
 
 // function to convert a date from Unix format
 var ConvertUnixDate = function()  {
@@ -429,11 +447,19 @@ var buttonClickHandler = function() {
     citySearchEntered = cityName
     console.log("The city entered is " + cityName); 
     console.log("The city name variable is " + citySearchEntered);
+    var search_results = document.createElement("li");
+    search_results.classList = "d-flex search-results";
+    search_results.setAttribute("id", cityName);
+    search_results.innerHTML = cityName;
+    searchHistoryResults.appendChild(search_results);
+    citySearches.push(cityName);
+    localStorage.setItem("citySearches", JSON.stringify(citySearches));
+
     getLongLatResults();
 }
 
 
 
-
+// searchHistoryResults.addEventListener("click", loadcityresults);
 CityNameInput.addEventListener("submit", formSubmitHandler);
 SearchCityButton.addEventListener("click", buttonClickHandler);
