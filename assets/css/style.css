@@ -78,3 +78,13 @@
 .bad_UV_Index {
     background-color: red;
 }
+
+#main_Icon {
+    width: 60px;
+    height: 60px;
+}
+
+#day_one_Icon, #second_Day_Icon, #third_Day_Icon, #fourth_day_Icon, #fifth_day_Icon {
+    width: 35px;
+    height: 35px;
+}

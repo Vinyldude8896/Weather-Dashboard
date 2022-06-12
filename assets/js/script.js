@@ -13,6 +13,12 @@ var CurrentDate = document.querySelector("#current_date");
 var searchHistoryResults = document.querySelector("#search_history_results");
 var clearSearchResults = document.querySelector("#clear_search_results");
 var currentUVIndexPElement = document.querySelector("#current_UV_Index");
+var currentForecastIcon = document.querySelector("#main_Icon");
+var NextForecastIcon = document.querySelector("#day_one_Icon");
+var secondForecastIcon = document.querySelector("#second_Day_Icon");
+var thirdForecastIcon = document.querySelector("#third_Day_Icon");
+var fourthForecastIcon = document.querySelector("#fourth_day_Icon");
+var fifthForecastIcon = document.querySelector("#fifth_day_Icon");
 
 var cityNameConverted = "";
 var citySearchEntered = "";
@@ -23,6 +29,7 @@ var currentHumidity = "";
 var currentWind = "";
 var currentUvIndex = "";
 var CurrentDayConditions = "";
+var currentDayIcon = "";
 var conditionsCurrentDay = document.querySelector("#current_temp_conditions")
 
 // next day global variables for date, temp, wind, humidity, conditions
@@ -32,6 +39,7 @@ var nextDateTemp = "";
 var nextDateWind = "";
 var nextDateHumidity = "";
 var NextDayConditions = "";
+var nextdayIcon = "";
 
 
 // second forecast day variables
@@ -40,6 +48,7 @@ var secondForecastTemp = "";
 var secondForecastWind = "";
 var secondForecastHumidity = "";
 var secondForecastConditions = "";
+var seconDayIcon = "";
 
 // third forecast day variables
 var thirdForecastDate = "";
@@ -47,6 +56,7 @@ var thirdForecastTemp = "";
 var thirdForecastWind = "";
 var thirdForecastHumidity = "";
 var thirdForecastConditions = "";
+var thirdDayIcon = "";
 
 // fourth forecast day variables
 var fourthForecastDate = "";
@@ -54,6 +64,7 @@ var fourthForecastTemp = "";
 var fourthForecastWind = "";
 var fourthForecastHumidity = "";
 var fourthForecastConditions = "";
+var fourthDayIcon = "";
 
 // fifth forecast day variables
 var fifthForecastDate = "";
@@ -61,6 +72,7 @@ var fifthForecastTemp = "";
 var fifthForecastWind = "";
 var fifthForecastHumidity = "";
 var fifthForecastConditions = "";
+var fifthDayIcon = "";
 
 
 
@@ -189,12 +201,14 @@ var displayCurrentWeather = function(data){
         currentUVIndexPElement.style.backgroundColor = "red";
     }
 
-    var currentDayIcon = document.getElementById("current_forecast")
-    if (CurrentDayConditions === "rain"){
-         currentDayIcon.dataset.icon = "fa-solid:cloud-rain";
-    } else if (CurrentDayConditions === "cloudy"){
-        currentDayIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
-    } else  currentDayIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
+   var iconUrl = "https://openweathermap.org/img/w/" + currentDayIcon + ".png";
+   currentForecastIcon.src = iconUrl;
+
+    // if (CurrentDayConditions === "rain"){
+    //      currentDayIcon.dataset.icon = "fa-solid:cloud-rain";
+    // } else if (CurrentDayConditions === "cloudy"){
+    //     currentDayIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    // } else  currentDayIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
    
   
 
@@ -204,12 +218,15 @@ var displayCurrentWeather = function(data){
     document.getElementById("next_day_wind").innerHTML = "Wind: " + nextDateWind + 'MPH';
     document.getElementById("next_day_humidity").innerHTML = "Humidity: " + nextDateHumidity;
 
-    var nextdayIcon = document.getElementById("forecast_day_one")
-    if (NextDayConditions === "rain"){
-         nextdayIcon.dataset.icon = "fa-solid:cloud-rain";
-    } else if (NextDayConditions === "cloudy"){
-        nextdayIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
-    } else  nextdayIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
+
+    var iconUrl = "https://openweathermap.org/img/w/" + nextdayIcon + ".png";
+    NextForecastIcon.src = iconUrl;
+    // var nextdayIcon = document.getElementById("forecast_day_one")
+    // if (NextDayConditions === "rain"){
+    //      nextdayIcon.dataset.icon = "fa-solid:cloud-rain";
+    // } else if (NextDayConditions === "cloudy"){
+    //     nextdayIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    // } else  nextdayIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
 
 
     // displaying day 2 of 5 day forecast
@@ -219,12 +236,15 @@ var displayCurrentWeather = function(data){
     document.getElementById("second_forecast_wind").innerHTML = "Wind: " + secondForecastWind + 'MPH';
     document.getElementById("second_forecast_humidity").innerHTML = "Humidity: " + secondForecastHumidity;
 
-    var secondForecastIcon = document.getElementById("second_forecast_icon")
-    if (secondForecastConditions === "rain"){
-         secondForecastIcon.dataset.icon = "fa-solid:cloud-rain";
-    } else if (secondForecastConditions === "cloudy"){
-        secondForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
-    } else  secondForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
+
+    var secondIconUrl = "https://openweathermap.org/img/w/" + seconDayIcon + ".png";
+    secondForecastIcon.src = secondIconUrl;
+    // var secondForecastIcon = document.getElementById("second_forecast_icon")
+    // if (secondForecastConditions === "rain"){
+    //      secondForecastIcon.dataset.icon = "fa-solid:cloud-rain";
+    // } else if (secondForecastConditions === "cloudy"){
+    //     secondForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    // } else  secondForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
 
 
     // displaying day 3 of 5 day forecast
@@ -234,12 +254,15 @@ var displayCurrentWeather = function(data){
     document.getElementById("third_forecast_wind").innerHTML = "Wind: " + thirdForecastWind + 'MPH';
     document.getElementById("third_forecast_humidity").innerHTML = "Humidity: " + thirdForecastHumidity;
 
-    var thirdForecastIcon = document.getElementById("third_forecast_icon")
-    if (thirdForecastConditions === "rain"){
-         thirdForecastIcon.dataset.icon = "fa-solid:cloud-rain";
-    } else if (thirdForecastConditions === "cloudy"){
-        thirdForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
-    } else  thirdForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
+
+    var thirdIconUrl = "https://openweathermap.org/img/w/" + thirdDayIcon + ".png";
+    thirdForecastIcon.src = thirdIconUrl;
+    // var thirdForecastIcon = document.getElementById("third_forecast_icon")
+    // if (thirdForecastConditions === "rain"){
+    //      thirdForecastIcon.dataset.icon = "fa-solid:cloud-rain";
+    // } else if (thirdForecastConditions === "cloudy"){
+    //     thirdForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    // } else  thirdForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
 
     // displaying day 4 of 5 forecast
 
@@ -248,12 +271,15 @@ var displayCurrentWeather = function(data){
     document.getElementById("fourth_forecast_wind").innerHTML = "Wind: " + fourthForecastWind+ 'MPH';
     document.getElementById("fourth_forecast_humidity").innerHTML = "Humidity: " + fourthForecastHumidity;
 
-    var fourthForecastIcon = document.getElementById("fourth_forecast_icon")
-    if (fourthForecastConditions === "rain"){
-         fourthForecastIcon.dataset.icon = "fa-solid:cloud-rain";
-    } else if (fourthForecastConditions === "cloudy"){
-        fourthForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
-    } else  fourthForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
+    var fourthIconUrl = "https://openweathermap.org/img/w/" + fourthDayIcon + ".png";
+    fourthForecastIcon.src = fourthIconUrl;
+
+    // var fourthForecastIcon = document.getElementById("fourth_forecast_icon")
+    // if (fourthForecastConditions === "rain"){
+    //      fourthForecastIcon.dataset.icon = "fa-solid:cloud-rain";
+    // } else if (fourthForecastConditions === "cloudy"){
+    //     fourthForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    // } else  fourthForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
 
     // displaying day 5 of 5 forecast
     fifthDayDate.innerHTML = fifthForecastDate;
@@ -261,12 +287,15 @@ var displayCurrentWeather = function(data){
     document.getElementById("fifth_forecast_wind").innerHTML = "Wind: " + fifthForecastWind+ 'MPH';
     document.getElementById("fifth_forecast_humidity").innerHTML = "Humidity: " + fifthForecastHumidity;
 
-    var fifthForecastIcon = document.getElementById("fifth_forecast_icon")
-    if (fifthForecastConditions === "rain"){
-         fifthForecastIcon.dataset.icon = "fa-solid:cloud-rain";
-    } else if (fifthForecastConditions === "cloudy"){
-        fifthForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
-    } else  fifthForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
+    var fifthIconUrl = "https://openweathermap.org/img/w/" + fifthDayIcon + ".png";
+    fifthForecastIcon.src = fifthIconUrl;
+
+    // var fifthForecastIcon = document.getElementById("fifth_forecast_icon")
+    // if (fifthForecastConditions === "rain"){
+    //      fifthForecastIcon.dataset.icon = "fa-solid:cloud-rain";
+    // } else if (fifthForecastConditions === "cloudy"){
+    //     fifthForecastIcon.dataset.icon = "fluent:weather-cloudy-48-filled";
+    // } else  fifthForecastIcon.dataset.icon ="material-symbols:wb-sunny-outline-rounded";
 
 };
 
@@ -298,16 +327,19 @@ var getWeatherResults = function(citySearchEntered) {
             var UvIndex = data.current.uvi;
             currentUvIndex = UvIndex;
 
-            var CurrentDayClouds = parseInt(data.daily[0].clouds);
-            var CurrentDayRain = parseFloat((data.daily[0].pop).toFixed(2));
+            var currentIcon = data.current.weather[0].icon;
+            currentDayIcon = currentIcon;
 
-            // checking to see chance of clouds, rain or sun
-            if (CurrentDayClouds >50) {
-                CurrentDayConditions ="cloudy";
-            } else if (CurrentDayRain > 0.60) {
-                CurrentDayConditions = "rain"
-            } else CurrentDayConditions = "sunny"
-            console.log("Cloudiness is " + CurrentDayClouds + ". Current Day Rain is " + CurrentDayRain + ". Current Day conditions are " + CurrentDayConditions );
+            // var CurrentDayClouds = parseInt(data.daily[0].clouds);
+            // var CurrentDayRain = parseFloat((data.daily[0].pop).toFixed(2));
+
+            // // checking to see chance of clouds, rain or sun
+            // if (CurrentDayClouds >50) {
+            //     CurrentDayConditions ="cloudy";
+            // } else if (CurrentDayRain > 0.60) {
+            //     CurrentDayConditions = "rain"
+            // } else CurrentDayConditions = "sunny"
+            // console.log("Cloudiness is " + CurrentDayClouds + ". Current Day Rain is " + CurrentDayRain + ". Current Day conditions are " + CurrentDayConditions );
 
             // next day temperatures being pulled and set
 
@@ -325,16 +357,19 @@ var getWeatherResults = function(citySearchEntered) {
             var NextDayHumidity = data.daily[1].humidity;
             nextDateHumidity = NextDayHumidity;
 
-            var nextDayClouds = parseInt(data.daily[1].clouds);
-            var nextDayRain = parseFloat((data.daily[1].pop).toFixed(2));
+            var nextdayconditions = data.daily[1].weather[0].icon;
+            nextdayIcon = nextdayconditions;
 
-            // checking to see chance of clouds, rain or sun
-            if (nextDayClouds >50) {
-                NextDayConditions ="cloudy";
-            } else if (nextDayRain > 0.60) {
-                NextDayConditions = "rain"
-            } else NextDayConditions = "sunny"
-            console.log("Cloudiness is " + nextDayClouds + ". Next Day Rain is " + nextDayRain + ". Next Day conditions are " + NextDayConditions );
+            // var nextDayClouds = parseInt(data.daily[1].clouds);
+            // var nextDayRain = parseFloat((data.daily[1].pop).toFixed(2));
+
+            // // checking to see chance of clouds, rain or sun
+            // if (nextDayClouds >50) {
+            //     NextDayConditions ="cloudy";
+            // } else if (nextDayRain > 0.60) {
+            //     NextDayConditions = "rain"
+            // } else NextDayConditions = "sunny"
+            // console.log("Cloudiness is " + nextDayClouds + ". Next Day Rain is " + nextDayRain + ". Next Day conditions are " + NextDayConditions );
 
 
             // second day forecast temperatures being pulled and set
@@ -354,16 +389,19 @@ var getWeatherResults = function(citySearchEntered) {
             secondForecastHumidity = secondDayHumidity;
             console.log("The second day humidity is " + secondDayHumidity);
 
-            var secondDayClouds = parseInt(data.daily[2].clouds);
-            var secondDayRain = parseFloat((data.daily[2].pop).toFixed(2));
+            var secondDayConditions = data.daily[2].weather[0].icon;
+            seconDayIcon = secondDayConditions;
 
-            // checking to see chance of clouds, rain or sun
-            if (secondDayClouds >50) {
-                secondForecastConditions ="cloudy";
-            } else if (secondDayRain > 0.60) {
-                secondForecastConditions = "rain";
-            } else secondForecastConditions = "sunny";
-            console.log("Cloudiness is " + secondDayClouds + ". second Day Rain is " + secondDayRain + ". second Day conditions are " + secondForecastConditions );
+            // var secondDayClouds = parseInt(data.daily[2].clouds);
+            // var secondDayRain = parseFloat((data.daily[2].pop).toFixed(2));
+
+            // // checking to see chance of clouds, rain or sun
+            // if (secondDayClouds >50) {
+            //     secondForecastConditions ="cloudy";
+            // } else if (secondDayRain > 0.60) {
+            //     secondForecastConditions = "rain";
+            // } else secondForecastConditions = "sunny";
+            // console.log("Cloudiness is " + secondDayClouds + ". second Day Rain is " + secondDayRain + ". second Day conditions are " + secondForecastConditions );
 
             // third day forecast temperatures being pulled and set
 
@@ -382,16 +420,19 @@ var getWeatherResults = function(citySearchEntered) {
             thirdForecastHumidity = thirdDayHumidity;
             console.log("The third day humidity is " + thirdDayHumidity);
 
-            var thirdDayClouds = parseInt(data.daily[3].clouds);
-            var thirdDayRain = parseFloat((data.daily[3].pop).toFixed(2));
+            var thirdDayConditions = data.daily[3].weather[0].icon;
+            thirdDayIcon = thirdDayConditions;
 
-            // checking to see chance of clouds, rain or sun
-            if (thirdDayClouds >50) {
-                thirdForecastConditions ="cloudy";
-            } else if (thirdDayRain > 0.60) {
-                thirdForecastConditions = "rain";
-            } else thirdForecastConditions = "sunny";
-            console.log("Cloudiness is " + thirdDayClouds + ". Third Day Rain is " + thirdDayRain + ". Third Day conditions are " + thirdForecastConditions );
+            // var thirdDayClouds = parseInt(data.daily[3].clouds);
+            // var thirdDayRain = parseFloat((data.daily[3].pop).toFixed(2));
+
+            // // checking to see chance of clouds, rain or sun
+            // if (thirdDayClouds >50) {
+            //     thirdForecastConditions ="cloudy";
+            // } else if (thirdDayRain > 0.60) {
+            //     thirdForecastConditions = "rain";
+            // } else thirdForecastConditions = "sunny";
+            // console.log("Cloudiness is " + thirdDayClouds + ". Third Day Rain is " + thirdDayRain + ". Third Day conditions are " + thirdForecastConditions );
 
 
                // fourth day forecast temperatures being pulled and set
@@ -411,16 +452,19 @@ var getWeatherResults = function(citySearchEntered) {
                fourthForecastHumidity = fourthDayHumidity;
                console.log("The fourth day humidity is " + fourthDayHumidity);
    
-               var fourthDayClouds = parseInt(data.daily[4].clouds);
-               var fourthDayRain = parseFloat((data.daily[4].pop).toFixed(2));
+               var fourthDayConditions = data.daily[4].weather[0].icon;
+               fourthDayIcon = fourthDayConditions;
+
+            //    var fourthDayClouds = parseInt(data.daily[4].clouds);
+            //    var fourthDayRain = parseFloat((data.daily[4].pop).toFixed(2));
    
-               // checking to see chance of clouds, rain or sun
-               if (fourthDayClouds >50) {
-                   fourthForecastConditions ="cloudy";
-               } else if (fourthDayRain > 0.60) {
-                   fourthForecastConditions = "rain";
-               } else fourthForecastConditions = "sunny";
-               console.log("Cloudiness is " + fourthDayClouds + ". Fourth Day Rain is " + fourthDayRain + ". Fourth Day conditions are " + fourthForecastConditions );
+            //    // checking to see chance of clouds, rain or sun
+            //    if (fourthDayClouds >50) {
+            //        fourthForecastConditions ="cloudy";
+            //    } else if (fourthDayRain > 0.60) {
+            //        fourthForecastConditions = "rain";
+            //    } else fourthForecastConditions = "sunny";
+            //    console.log("Cloudiness is " + fourthDayClouds + ". Fourth Day Rain is " + fourthDayRain + ". Fourth Day conditions are " + fourthForecastConditions );
             
             
                 // fifth day forecast temperatures being pulled and set
@@ -439,18 +483,21 @@ var getWeatherResults = function(citySearchEntered) {
                 var fifthDayHumidity = data.daily[5].humidity;
                 fifthForecastHumidity = fifthDayHumidity;
                 console.log("The fifth day humidity is " + fifthDayHumidity);
+
+                var fifthDayConditions = data.daily[5].weather[0].icon;
+                fifthDayIcon = fifthDayConditions;
     
-                var fifthDayClouds = parseInt(data.daily[5].clouds);
-                var fifthDayRain = parseFloat((data.daily[5].pop).toFixed(2));
+            //     var fifthDayClouds = parseInt(data.daily[5].clouds);
+            //     var fifthDayRain = parseFloat((data.daily[5].pop).toFixed(2));
     
-                // checking to see chance of clouds, rain or sun
-                if (fifthDayClouds >50) {
-                    fifthForecastConditions ="cloudy";
-                } else if (fifthDayRain > 0.60) {
-                    fifthForecastConditions = "rain";
-                } else fifthForecastConditions = "sunny";
-                console.log("Cloudiness is " + fifthDayClouds + ". fifth Day Rain is " + fifthDayRain + ". Fifth Day conditions are " + fifthForecastConditions );
-            console.log("The curent temperature is " + data.current.temp);
+            //     // checking to see chance of clouds, rain or sun
+            //     if (fifthDayClouds >50) {
+            //         fifthForecastConditions ="cloudy";
+            //     } else if (fifthDayRain > 0.60) {
+            //         fifthForecastConditions = "rain";
+            //     } else fifthForecastConditions = "sunny";
+            //     console.log("Cloudiness is " + fifthDayClouds + ". fifth Day Rain is " + fifthDayRain + ". Fifth Day conditions are " + fifthForecastConditions );
+            // console.log("The curent temperature is " + data.current.temp);
             displayCurrentWeather();
         });
         
