@@ -11,6 +11,8 @@ var fourthDayDate = document.querySelector("#fourth_forecast_date");
 var fifthDayDate = document.querySelector("#fifth_forecast_date");
 var CurrentDate = document.querySelector("#current_date");
 var searchHistoryResults = document.querySelector("#search_history_results");
+var clearSearchResults = document.querySelector("#clear_search_results");
+var currentUVIndexPElement = document.querySelector("#current_UV_Index");
 
 var cityNameConverted = "";
 var citySearchEntered = "";
@@ -176,8 +178,17 @@ var displayCurrentWeather = function(data){
     document.getElementById("current_temp").innerHTML = "Temp: " + " " + currentTemperature + '&#8451';
     document.getElementById("current_wind").innerHTML = "Wind: " + " " + currentWind + 'MPH';
     document.getElementById("current_humidity").innerHTML = "Humidity: " + " " + currentHumidity;
-    document.getElementById("current_UV").innerHTML = "UV Index: " + " " + currentUvIndex;
-   
+    document.getElementById("current_UV_Index").textContent = currentUvIndex;
+
+    var compareUvIndex = parseInt(currentUvIndex);
+    if (compareUvIndex <5) {
+        currentUVIndexPElement.style.backgroundColor = "#8FBC8F";
+    } else if (compareUvIndex>5 && compareUvIndex <8 ){
+        currentUVIndexPElement.style.backgroundColor = "yellow";
+    } else if (compareUvIndex >8) {
+        currentUVIndexPElement.style.backgroundColor = "red";
+    }
+
     var currentDayIcon = document.getElementById("current_forecast")
     if (CurrentDayConditions === "rain"){
          currentDayIcon.dataset.icon = "fa-solid:cloud-rain";
@@ -449,26 +460,35 @@ var getWeatherResults = function(citySearchEntered) {
 
     // function call to API to get Longitude and Latitude of city entered
     var getLongLatResults = function(){
-    var apiUrl="http://api.positionstack.com/v1/forward?access_key=" + apiLongLat +"&query=" + citySearchEntered + "&limit1";
+    var apiUrl="http://api.openweathermap.org/geo/1.0/direct?q=" + citySearchEntered +"&limit=1&appid=" + "feb921e24625822c8914d6709ecb623e";
 
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
         response.json().then(function(data){
             console.log(data);
-         var longitude = data.data[0].longitude;
+         var longitude = data[0].lon;
          console.log(longitude);
          citySearchEnteredLong = longitude;
-         var latitude = data.data[0].latitude;
+         var latitude = data[0].lat;
          citySearchEnteredLat = latitude;
          console.log(latitude);
-         var cityNameLabel = data.data[0].label;
-         cityNameConverted = cityNameLabel;
+         var cityNameLabel = data[0].name;
+         var cityCountry = data[0].country;
+         cityNameConverted = cityNameLabel + ", " + cityCountry;
          console.log("Converteed City Name is " + cityNameConverted);
         getWeatherResults();
         });
     }
 });
 
+}
+
+// function to clear local storage search results
+
+var clearSavedSearchResults = function () {
+    localStorage.clear();
+    searchHistoryResults.innerHTML = "";
+    window.alert("Search Results Cleared");
 }
 
 // function to handle button click and asign city name
@@ -493,3 +513,4 @@ loadCitySearches();
 // searchHistoryResults.addEventListener("click", loadcityresults);
 CityNameInput.addEventListener("submit", formSubmitHandler);
 SearchCityButton.addEventListener("click", buttonClickHandler);
+clearSearchResults.addEventListener("click", clearSavedSearchResults);
