@@ -58,3 +58,23 @@
     background-color: aquamarine;
     cursor: pointer;
 }
+
+#clear_search_results {
+    font-weight: bold;
+}
+
+#clear_search_results:hover {
+    background-color: red;
+}
+
+.good_UV_Index {
+    background-color: green;
+}
+
+.warning_UV_Index {
+    background-color: yellow;
+}
+
+.bad_UV_Index {
+    background-color: red;
+}
