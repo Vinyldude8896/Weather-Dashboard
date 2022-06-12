@@ -18,4 +18,4 @@ a 5-day future forcase will display with date, conditions, temperature, wind spe
 
 when clikcing on search history you can view the previous search results.
 
-link to the page : https://github.com/Vinyldude8896/Weather-Dashboard
+link to the page : https://vinyldude8896.github.io/Weather-Dashboard/
