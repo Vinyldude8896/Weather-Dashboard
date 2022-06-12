@@ -460,7 +460,7 @@ var getWeatherResults = function(citySearchEntered) {
 
     // function call to API to get Longitude and Latitude of city entered
     var getLongLatResults = function(){
-    var apiUrl="http://api.openweathermap.org/geo/1.0/direct?q=" + citySearchEntered +"&limit=1&appid=" + "feb921e24625822c8914d6709ecb623e";
+    var apiUrl="https://api.openweathermap.org/geo/1.0/direct?q=" + citySearchEntered +"&limit=1&appid=" + "feb921e24625822c8914d6709ecb623e";
 
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
