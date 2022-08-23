@@ -37,4 +37,4 @@ Multiple days were spent testing to ensure proper data was being written to page
 
 ### Images of example readme.md
 
-<img src="./weather_dashboard.png" alt="Getting started">
+<img src="./Weather_dashboard.jpg" alt="Getting started">
